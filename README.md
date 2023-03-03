@@ -26,7 +26,7 @@ sudo apt update && sudo apt upgrade
   </code></pre>
 </div>
 
-#### 1.1 Kiểm tra SSH daemon.
+#### 2 Kiểm tra SSH daemon.
 
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
@@ -35,7 +35,7 @@ sudo service ssh status
   </code></pre>
 </div>
 
-#### 1.2 Nếu SSH daemon chưa được cài đặt, bạn có thể cài đặt nó bằng lệnh sau:
+#### Nếu SSH daemon chưa được cài đặt, bạn có thể cài đặt nó bằng lệnh sau:
 
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
@@ -44,7 +44,16 @@ sudo apt-get install openssh-server
   </code></pre>
 </div>
 
-#### 1.3 Sau khi cài đặt xong, chạy lệnh sau để kiểm tra trạng thái của SSH daemon:
+#### Sau khi cài đặt xong, chạy lệnh sau để kiểm tra trạng thái của SSH daemon:
+
+<div class="code-block">
+  <button class="btn" data-clipboard-target="#code"></button>
+  <pre><code id="code">
+sudo service ssh start
+  </code></pre>
+</div>
+
+#### Kiểm tra lại SSH daemon.
 
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
@@ -53,16 +62,7 @@ sudo service ssh status
   </code></pre>
 </div>
 
-#### 1.1 Kiểm tra lại SSH daemon.
-
-<div class="code-block">
-  <button class="btn" data-clipboard-target="#code"></button>
-  <pre><code id="code">
-sudo service ssh status
-  </code></pre>
-</div>
-
-### 2.Cài đặt Java Development Kit (JDK) bằng lệnh:
+### 3.Cài đặt Java Development Kit (JDK) bằng lệnh:
 
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
@@ -71,7 +71,7 @@ sudo apt install default-jdk
   </code></pre>
 </div>
 
-### 3.Tải xuống Hadoop
+### 4.Tải xuống Hadoop
 
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
@@ -80,7 +80,7 @@ wget https://downloads.apache.org/hadoop/common/hadoop-3.3.4/hadoop-3.3.4.tar.gz
   </code></pre>
 </div>
 
-### 4.Sau khi tải xuống, giải nén file tar.gz bằng lệnh:
+### 5.Sau khi tải xuống, giải nén file tar.gz bằng lệnh:
 
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
@@ -90,7 +90,7 @@ tar -xzvf hadoop-3.3.4.tar.gz
 </div>
 
 
-### 5.Di chuyển thư mục Hadoop đã giải nén vào thư mục /usr/local bằng lệnh:
+### 6.Di chuyển thư mục Hadoop đã giải nén vào thư mục /usr/local bằng lệnh:
 
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
@@ -99,7 +99,7 @@ sudo mv hadoop-3.3.4.tar.gz /usr/local/hadoop
   </code></pre>
 </div>
 
-### 6.Thiết lập biến môi trường cho Hadoop bằng cách thêm các dòng sau vào tệp tin /etc/environment:
+### 7.Thiết lập biến môi trường cho Hadoop bằng cách thêm các dòng sau vào tệp tin /etc/environment:
 
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
@@ -109,7 +109,7 @@ PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
   </code></pre>
 </div>
 
-### 7.Thực hiện lệnh sau để áp dụng các thay đổi cho biến môi trường:
+### 8.Thực hiện lệnh sau để áp dụng các thay đổi cho biến môi trường:
 
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
@@ -118,7 +118,7 @@ source /etc/environment
   </code></pre>
 </div>
 
-### 8.Sửa tệp tin cấu hình của Hadoop (file /usr/local/hadoop/etc/hadoop/hadoop-env.sh) bằng cách thêm đường dẫn của JDK vào biến JAVA_HOME như sau:
+### 9.Sửa tệp tin cấu hình của Hadoop (file /usr/local/hadoop/etc/hadoop/hadoop-env.sh) bằng cách thêm đường dẫn của JDK vào biến JAVA_HOME như sau:
 
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
@@ -128,7 +128,9 @@ export JAVA_HOME=/usr/lib/jvm/default-java
 </div>
 
 
-### 9.Cấu hình Hadoop bằng cách chỉnh sửa tệp tin /usr/local/hadoop/etc/hadoop/core-site.xml như sau:
+### 10.Cấu hình Hadoop 
+#### Chỉnh sửa tệp tin /usr/local/hadoop/etc/hadoop/core-site.xml như sau:
+
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
   <pre><code id="code">
@@ -142,7 +144,7 @@ export JAVA_HOME=/usr/lib/jvm/default-java
   </pre>
 </div>
 
-### 10.Chỉnh sửa tệp tin /usr/local/hadoop/etc/hadoop/hdfs-site.xml để cấu hình Hadoop để lưu trữ dữ liệu như sau:
+### Chỉnh sửa tệp tin /usr/local/hadoop/etc/hadoop/hdfs-site.xml để cấu hình Hadoop để lưu trữ dữ liệu như sau:
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
   <pre><code id="code">
@@ -164,7 +166,37 @@ export JAVA_HOME=/usr/lib/jvm/default-java
   </pre>
 </div>
 
-### 11.Khởi động Hadoop bằng lệnh sau:
+### 12.Tạo enable password cho hadoop user
+
+<div class="code-block">
+  <button class="btn" data-clipboard-target="#code"></button>
+  <pre><code id="code">
+ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+  </code>
+  </pre>
+</div>
+
+#### Sử dụng lệnh cat lưu trữ pub key trong authorized_keys
+
+<div class="code-block">
+  <button class="btn" data-clipboard-target="#code"></button>
+  <pre><code id="code">
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+  </code>
+  </pre>
+</div>
+
+#### Cấp quyền cho user
+
+<div class="code-block">
+  <button class="btn" data-clipboard-target="#code"></button>
+  <pre><code id="code">
+chmod 0600 ~/.ssh/authorized_keys
+  </code>
+  </pre>
+</div>
+
+### 12.Khởi động Hadoop bằng lệnh sau:
 
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
