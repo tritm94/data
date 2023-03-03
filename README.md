@@ -26,6 +26,42 @@ sudo apt update && sudo apt upgrade
   </code></pre>
 </div>
 
+#### 1.1 Kiểm tra SSH daemon.
+
+<div class="code-block">
+  <button class="btn" data-clipboard-target="#code"></button>
+  <pre><code id="code">
+sudo service ssh status
+  </code></pre>
+</div>
+
+#### 1.2 Nếu SSH daemon chưa được cài đặt, bạn có thể cài đặt nó bằng lệnh sau:
+
+<div class="code-block">
+  <button class="btn" data-clipboard-target="#code"></button>
+  <pre><code id="code">
+sudo apt-get install openssh-server
+  </code></pre>
+</div>
+
+#### 1.3 Sau khi cài đặt xong, chạy lệnh sau để kiểm tra trạng thái của SSH daemon:
+
+<div class="code-block">
+  <button class="btn" data-clipboard-target="#code"></button>
+  <pre><code id="code">
+sudo service ssh status
+  </code></pre>
+</div>
+
+#### 1.1 Kiểm tra lại SSH daemon.
+
+<div class="code-block">
+  <button class="btn" data-clipboard-target="#code"></button>
+  <pre><code id="code">
+sudo service ssh status
+  </code></pre>
+</div>
+
 ### 2.Cài đặt Java Development Kit (JDK) bằng lệnh:
 
 <div class="code-block">
