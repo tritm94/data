@@ -22,7 +22,7 @@ Install Hadoop and Apache Spark
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
   <pre><code id="code">
-   sudo apt update && sudo apt upgrade 
+sudo apt update && sudo apt upgrade 
   </code></pre>
 </div>
 
@@ -31,7 +31,7 @@ Install Hadoop and Apache Spark
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
   <pre><code id="code">
-  sudo apt install default-jdk
+sudo apt install default-jdk
   </code></pre>
 </div>
 
@@ -40,7 +40,7 @@ Install Hadoop and Apache Spark
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
   <pre><code id="code">
-  wget https://downloads.apache.org/hadoop/common/hadoop-3.3.4/hadoop-3.3.4.tar.gz
+wget https://downloads.apache.org/hadoop/common/hadoop-3.3.4/hadoop-3.3.4.tar.gz
   </code></pre>
 </div>
 
@@ -49,7 +49,7 @@ Install Hadoop and Apache Spark
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
   <pre><code id="code">
-  tar -xzvf hadoop-3.3.4.tar.gz
+tar -xzvf hadoop-3.3.4.tar.gz
   </code></pre>
 </div>
 
@@ -59,7 +59,7 @@ Install Hadoop and Apache Spark
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
   <pre><code id="code">
-  sudo mv hadoop-3.3.4.tar.gz /usr/local/hadoop
+sudo mv hadoop-3.3.4.tar.gz /usr/local/hadoop
   </code></pre>
 </div>
 
@@ -68,8 +68,8 @@ Install Hadoop and Apache Spark
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
   <pre><code id="code">
-  HADOOP_HOME=/usr/local/hadoop
-    PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+HADOOP_HOME=/usr/local/hadoop
+PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
   </code></pre>
 </div>
 
@@ -78,7 +78,7 @@ Install Hadoop and Apache Spark
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
   <pre><code id="code">
-  source /etc/environment
+source /etc/environment
   </code></pre>
 </div>
 
@@ -87,7 +87,7 @@ Install Hadoop and Apache Spark
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
   <pre><code id="code">
-  export JAVA_HOME=/usr/lib/jvm/default-java
+export JAVA_HOME=/usr/lib/jvm/default-java
   </code></pre>
 </div>
 
@@ -96,12 +96,12 @@ Install Hadoop and Apache Spark
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
   <pre><code id="code">
-  &lt;configuration&gt;
-        &lt;property&gt;
-          &lt;name&gt;fs.defaultFS&lt;/name&gt;
-          &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;
-        &lt;/property&gt;
-    &lt;/configuration&gt;
+&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name&gt;fs.defaultFS&lt;/name&gt;
+    &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
   </code>
   </pre>
 </div>
@@ -110,20 +110,20 @@ Install Hadoop and Apache Spark
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
   <pre><code id="code">
-  &lt;configuration&gt;
-    &lt;property&gt;
-        &lt;name&gt;dfs.replication&lt;/name&gt;
-        &lt;value&gt;1&lt;/value&gt;
-    &lt;/property&gt;
-    &lt;property&gt;
-        &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;
-        &lt;value&gt;/usr/local/hadoop/hadoop_data/hdfs/namenode&lt;/value&gt;
-    &lt;/property&gt;
-    &lt;property&gt;
-        &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;
-        &lt;value&gt;/usr/local/hadoop/hadoop_data/hdfs/datanode&lt;/value&gt;
-    &lt;/property&gt;
-    &lt;/configuration&gt;
+&lt;configuration&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.replication&lt;/name&gt;
+      &lt;value&gt;1&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;
+      &lt;value&gt;/usr/local/hadoop/hadoop_data/hdfs/namenode&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;
+      &lt;value&gt;/usr/local/hadoop/hadoop_data/hdfs/datanode&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
   </code>
   </pre>
 </div>
@@ -133,7 +133,7 @@ Install Hadoop and Apache Spark
 <div class="code-block">
   <button class="btn" data-clipboard-target="#code"></button>
   <pre><code id="code">
-  /usr/local/hadoop/sbin/start-all.sh
+/usr/local/hadoop/sbin/start-all.sh
   </code>
   </pre>
 </div>
