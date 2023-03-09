@@ -168,17 +168,62 @@ hdfs namenode -format
   </code></pre>
 </div>
 
+#### Nếu SSH daemon chưa được cài đặt, bạn có thể cài đặt nó bằng lệnh sau:
+
+<div class="code-block">
+  <button class="btn" data-clipboard-target="#code"></button>
+  <pre><code id="code">
+sudo apt-get install openssh-server
+  </code></pre>
+</div>
+
+#### Sau khi cài đặt xong, chạy lệnh sau để kiểm tra trạng thái của SSH daemon:
+
+<div class="code-block">
+  <pre><code id="code">
+sudo service ssh start
+  </code></pre>
+</div>
+
+#### Kiểm tra lại SSH daemon.
+
+<div class="code-block">
+  <pre><code id="code">
+sudo service ssh status
+  </code></pre>
+</div>
+
+
 #### Khởi động Hadoop bằng lệnh sau:
 
 <div class="code-block">
   <pre><code id="code">
-/usr/local/hadoop/sbin/start-all.sh
+$HADOOP_HOME/sbin/start-all.sh
+  </code></pre>
+</div>
+
+#### Nếu lỗi Permission denied (publickey).
+
+#### Tạo keygen bằng phương thức RSA và lưu ở .ssh/id_rsa
+<div class="code-block">
+  <pre><code id="code">
+ssh-keygen -t rsa -P ” -f ~/.ssh/id_rsa
+  </code></pre>
+</div>
+
+#### Đưa key vừa khởi tạo vào authorized_keys (Key xác thực người dùng ở local)
+<div class="code-block">
+  <pre><code id="code">
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+  </code></pre>
+</div>
+
+#### Cấp quyền cho key ở .ssh/authorized_keys
+
+<div class="code-block">
+  <pre><code id="code">
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
   </code></pre>
 </div>
 
 ## Apache Spark
-
-<!-- Markdown link & img dfn's -->
-<script>
-  
-</script>
