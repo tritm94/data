@@ -195,12 +195,9 @@ sudo service ssh status
 
 
 #### Khởi động Hadoop bằng lệnh sau:
-
-<div class="code-block">
-  <pre><code id="code">
+```
 $HADOOP_HOME/sbin/start-all.sh
-  </code></pre>
-</div>
+```
 
 #### Nếu lỗi Permission denied (publickey).
 
@@ -222,7 +219,7 @@ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 <div class="code-block">
   <pre><code id="code">
-cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 0600 ~/.ssh/authorized_keys
   </code></pre>
 </div>
 
