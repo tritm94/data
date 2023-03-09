@@ -100,6 +100,7 @@ export JAVA_HOME=/usr/lib/jvm/default-java
 
 #### Chỉnh sửa tệp tin /usr/local/hadoop/etc/hadoop/hdfs-site.xml để cấu hình Hadoop để lưu trữ dữ liệu như sau:
 <div class="code-block">
+  <pre><code id="code">
 &lt;configuration&gt;
   &lt;property&gt;
     &lt;name&gt;dfs.replication&lt;/name&gt;
@@ -114,8 +115,7 @@ export JAVA_HOME=/usr/lib/jvm/default-java
     &lt;value&gt;/usr/local/hadoop/hadoop_data/hdfs/datanode&lt;/value&gt;
   &lt;/property&gt;
 &lt;/configuration&gt;
-  </code>
-  </pre>
+  </code></pre>
 </div>
 
 #### Chỉnh sửa tệp tin /usr/local/hadoop/etc/hadoop/mapred-site.xml để cấu hình Hadoop để lưu trữ dữ liệu như sau:
