@@ -1,12 +1,3 @@
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js">
-</script>
-<script>
-    new ClipboardJS('.btn');
-</script>
-
 # DATA WARE HOUSE - DATA LAKE #
 
 Project about Data
