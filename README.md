@@ -30,9 +30,6 @@ Install Hadoop and Apache Spark
 #### Cập nhật hệ thống Ubuntu của bạn bằng cách sử dụng lệnh sau:
 
 <div class="code-block">
-  <button class="btn" data-clipboard-target="#code">
-    <i style="font-size:12px" class="fa">&#xf0c5;</i>
-  </button>
   <pre><code id="code">
 sudo apt update && sudo apt upgrade 
   </code></pre>
@@ -41,9 +38,6 @@ sudo apt update && sudo apt upgrade
 #### Cài đặt Java Development Kit (JDK) bằng lệnh:
 
 <div class="code-block">
-  <button class="btn" data-clipboard-target="#code">
-    <i style="font-size:12px" class="fa">&#xf0c5;</i>
-  </button>
   <pre><code id="code">
 sudo apt install default-jdk
   </code></pre>
@@ -52,9 +46,6 @@ sudo apt install default-jdk
 #### Tải xuống Hadoop
 
 <div class="code-block">
-  <button class="btn" data-clipboard-target="#code">
-    <i style="font-size:12px" class="fa">&#xf0c5;</i>
-  </button>
   <pre><code id="code">
 wget https://downloads.apache.org/hadoop/common/hadoop-3.3.4/hadoop-3.3.4.tar.gz
   </code></pre>
@@ -63,9 +54,6 @@ wget https://downloads.apache.org/hadoop/common/hadoop-3.3.4/hadoop-3.3.4.tar.gz
 #### Sau khi tải xuống, giải nén file tar.gz bằng lệnh:
 
 <div class="code-block">
-  <button class="btn" data-clipboard-target="#code">
-    <i style="font-size:12px" class="fa">&#xf0c5;</i>
-  </button>
   <pre><code id="code">
 tar -xzvf hadoop-3.3.4.tar.gz
   </code></pre>
@@ -75,9 +63,6 @@ tar -xzvf hadoop-3.3.4.tar.gz
 #### Di chuyển thư mục Hadoop đã giải nén vào thư mục /usr/local bằng lệnh:
 
 <div class="code-block">
-  <button class="btn" data-clipboard-target="#code">
-    <i style="font-size:12px" class="fa">&#xf0c5;</i>
-  </button>
   <pre><code id="code">
 sudo mv hadoop-3.3.4.tar.gz /usr/local/hadoop
   </code></pre>
@@ -86,9 +71,6 @@ sudo mv hadoop-3.3.4.tar.gz /usr/local/hadoop
 #### Thiết lập biến môi trường cho Hadoop bằng cách thêm các dòng sau vào tệp tin /etc/environment:
 
 <div class="code-block">
-  <button class="btn" data-clipboard-target="#code">
-    <i style="font-size:12px" class="fa">&#xf0c5;</i>
-  </button>
   <pre><code id="code">
 HADOOP_HOME=/usr/local/hadoop
 PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
@@ -98,9 +80,6 @@ PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 #### Thực hiện lệnh sau để áp dụng các thay đổi cho biến môi trường:
 
 <div class="code-block">
-  <button class="btn" data-clipboard-target="#code">
-    <i style="font-size:12px" class="fa">&#xf0c5;</i>
-  </button>
   <pre><code id="code">
 source /etc/environment
   </code></pre>
@@ -109,9 +88,6 @@ source /etc/environment
 #### Sửa tệp tin cấu hình của Hadoop (file /usr/local/hadoop/etc/hadoop/hadoop-env.sh) bằng cách thêm đường dẫn của JDK vào biến JAVA_HOME như sau:
 
 <div class="code-block">
-  <button class="btn" data-clipboard-target="#code">
-    <i style="font-size:12px" class="fa">&#xf0c5;</i>
-  </button>
   <pre><code id="code">
 export JAVA_HOME=/usr/lib/jvm/default-java
   </code></pre>
@@ -120,9 +96,6 @@ export JAVA_HOME=/usr/lib/jvm/default-java
 
 #### Cấu hình Hadoop bằng cách chỉnh sửa tệp tin /usr/local/hadoop/etc/hadoop/core-site.xml như sau:
 <div class="code-block">
-  <button class="btn" data-clipboard-target="#code">
-    <i style="font-size:12px" class="fa">&#xf0c5;</i>
-  </button>
   <pre><code id="code">
 &lt;configuration&gt;
   &lt;property&gt;
@@ -136,9 +109,6 @@ export JAVA_HOME=/usr/lib/jvm/default-java
 
 #### Chỉnh sửa tệp tin /usr/local/hadoop/etc/hadoop/hdfs-site.xml để cấu hình Hadoop để lưu trữ dữ liệu như sau:
 <div class="code-block">
-  <button class="btn" data-clipboard-target="#code">
-  </button>
-  <pre><code id="code">
 &lt;configuration&gt;
   &lt;property&gt;
     &lt;name&gt;dfs.replication&lt;/name&gt;
@@ -159,9 +129,6 @@ export JAVA_HOME=/usr/lib/jvm/default-java
 
 #### Chỉnh sửa tệp tin /usr/local/hadoop/etc/hadoop/mapred-site.xml để cấu hình Hadoop để lưu trữ dữ liệu như sau:
 <div class="code-block">
-  <button class="btn" data-clipboard-target="#code">
-    <i style="font-size:12px" class="fa">&#xf0c5;</i>
-  </button>
   <pre><code id="code">
 &lt;configuration&gt;
   &lt;property&gt;
@@ -175,9 +142,6 @@ export JAVA_HOME=/usr/lib/jvm/default-java
 
 #### Chỉnh sửa tệp tin /usr/local/hadoop/etc/hadoop/yarn-site.xml để cấu hình Hadoop để lưu trữ dữ liệu như sau:
 <div class="code-block">
-  <button class="btn" data-clipboard-target="#code">
-    <i style="font-size:12px" class="fa">&#xf0c5;</i>
-  </button>
   <pre><code id="code">
 &lt;configuration&gt;
   &lt;property&gt;
@@ -208,9 +172,6 @@ export JAVA_HOME=/usr/lib/jvm/default-java
 #### Định dạng HDFS nghe mới khởi chạy hadoop lần đầu
 
 <div class="code-block">
-  <button class="btn" data-clipboard-target="#code">
-    <i style="font-size:12px" class="fa">&#xf0c5;</i>
-  </button>
   <pre><code id="code">
 hdfs namenode -format
   </code></pre>
@@ -219,9 +180,6 @@ hdfs namenode -format
 #### Khởi động Hadoop bằng lệnh sau:
 
 <div class="code-block">
-  <button class="btn" data-clipboard-target="#code">
-    <i style="font-size:12px" class="fa">&#xf0c5;</i>
-  </button>
   <pre><code id="code">
 /usr/local/hadoop/sbin/start-all.sh
   </code></pre>
