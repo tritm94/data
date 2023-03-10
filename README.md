@@ -1,142 +1,344 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/FxL5qM0.jpg" alt="Bot logo"></a>
-</p>
+[![Hadoop](https://www.vectorlogo.zone/logos/apache_hadoop/apache_hadoop-ar21.svg)](https://hadoop.apache.org/)
+[![ApacheSpark](https://www.vectorlogo.zone/logos/apache_spark/apache_spark-ar21.svg)](https://spark.apache.org/)
 
-<h3 align="center">Project Title</h3>
+# DATA WARE HOUSE - DATA LAKE #
 
-<div align="center">
+Project about Data
 
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![Platform](https://img.shields.io/badge/platform-reddit-orange.svg)](https://www.reddit.com/user/Wordbook_Bot)
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+# 📝 Menu
 
+* [Install](#markdown-header--nstallation-tool)
+    
+    * [Hadoop](#hadoop)
+
+    * [Apache Spark](#apache-spark)
+
+    * [Kafka](#)
+
+***
+
+## [![Hadoop](https://www.vectorlogo.zone/logos/apache_hadoop/apache_hadoop-ar21.svg)](https://hadoop.apache.org/)
+
+## 🏁 **Cài đặt**
+
+### **Cập nhật hệ thống Ubuntu**
+
+<div class="code-block">
+  <pre><code id="code">
+sudo apt update && sudo apt upgrade
+  </code></pre>
 </div>
 
----
+***
+### **Cài đặt Java Development Kit (JDK)**
 
-<p align="center"> 🤖 Few lines describing what your bot does.
-    <br> 
-</p>
+<div class="code-block">
+  <pre><code id="code">
+sudo apt install default-jdk
+  </code></pre>
+</div>
 
-## 📝 Table of Contents
+***
+### **Tạo key cho người dùng**
 
-- [About](#about)
-- [Demo / Working](#demo)
-- [How it works](#working)
-- [Usage](#usage)
-- [Getting Started](#getting_started)
-- [Deploying your own bot](#deployment)
-- [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
-- [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
+#### Tạo key bằng phương thức RSA và lưu ở .ssh/id_rsa
+<div class="code-block">
+  <pre><code id="code">
+ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+  </code></pre>
+</div>
 
-## 🧐 About <a name = "about"></a>
+#### Tạo authorized_keys (Key xác thực người dùng ở local)
+<div class="code-block">
+  <pre><code id="code">
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+  </code></pre>
+</div>
 
-Write about 1-2 paragraphs describing the purpose of your bot.
+#### Cấp quyền cho key ở .ssh/authorized_keys
 
-## 🎥 Demo / Working <a name = "demo"></a>
+<div class="code-block">
+  <pre><code id="code">
+chmod 0600 ~/.ssh/authorized_keys
+  </code></pre>
+</div>
 
-![Working](https://media.giphy.com/media/20NLMBm0BkUOwNljwv/giphy.gif)
+***
 
-## 💭 How it works <a name = "working"></a>
+#### **Tải xuống Hadoop**
 
-The bot first extracts the word from the comment and then fetches word definitions, part of speech, example and source from the Oxford Dictionary API.
+<div class="code-block">
+  <pre><code id="code">
+wget https://downloads.apache.org/hadoop/common/hadoop-3.3.4/hadoop-3.3.4.tar.gz
+  </code></pre>
+</div>
 
-If the word does not exist in the Oxford Dictionary, the Oxford API then returns a 404 response upon which the bot then tries to fetch results form the Urban Dictionary API.
+#### Sau khi tải xuống, giải nén file tar.gz bằng lệnh:
 
-The bot uses the Pushshift API to fetch comments, PRAW module to reply to comments and Heroku as a server.
+<div class="code-block">
+  <pre><code id="code">
+tar -xzvf hadoop-3.3.4.tar.gz
+  </code></pre>
+</div>
 
-The entire bot is written in Python 3.6
 
-## 🎈 Usage <a name = "usage"></a>
+#### Di chuyển thư mục Hadoop đã giải nén vào thư mục /usr/local bằng lệnh:
 
-To use the bot, type:
+<div class="code-block">
+  <pre><code id="code">
+sudo mv hadoop-3.3.4.tar.gz /usr/local/hadoop
+  </code></pre>
+</div>
 
-```
-!dict word
-```
+***
 
-The first part, i.e. "!dict" **is not** case sensitive.
+### **Thiết lập biến môi trường cho Hadoop**
 
-The bot will then give you the Oxford Dictionary (or Urban Dictionary; if the word does not exist in the Oxford Dictionary) definition of the word as a comment reply.
-
-### Example:
-
-> !dict what is love
-
-**Definition:**
-
-Baby, dont hurt me~
-Dont hurt me~ no more.
-
-**Example:**
-
-Dude1: Bruh, what is love?
-Dude2: Baby, dont hurt me, dont hurt me- no more!
-Dude1: dafuq?
-
-**Source:** https://www.urbandictionary.com/define.php?term=what%20is%20love
-
----
-
-<sup>Beep boop. I am a bot. If there are any issues, contact my [Master](https://www.reddit.com/message/compose/?to=PositivePlayer1&subject=/u/Wordbook_Bot)</sup>
-
-<sup>Want to make a similar reddit bot? Check out: [GitHub](https://github.com/kylelobo/Reddit-Bot)</sup>
-
-## 🏁 Getting Started <a name = "getting_started"></a>
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them.
+#### Trỏ vào file theo đường dẫn /etc/environment
 
 ```
-Give examples
+sudo vi /etc/environment
 ```
 
-### Installing
+#### Thêm các dòng sau vào tệp tin /etc/environment
 
-A step by step series of examples that tell you how to get a development env running.
+<div class="code-block">
+  <pre><code id="code">
+HADOOP_HOME=/usr/local/hadoop
+PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+  </code></pre>
+</div>
 
-Say what the step will be
+#### Thực hiện lệnh sau để áp dụng các thay đổi cho biến môi trường:
+
+<div class="code-block">
+  <pre><code id="code">
+source /etc/environment
+  </code></pre>
+</div>
+
+***
+
+### **Cấu hình Hadoop**
+
+#### Sửa tệp tin cấu hình của Hadoop (file /usr/local/hadoop/etc/hadoop/hadoop-env.sh) bằng cách thêm đường dẫn của JDK vào biến JAVA_HOME như sau:
+
+<div class="code-block">
+  <pre><code id="code">
+export JAVA_HOME=/usr/lib/jvm/default-java
+  </code></pre>
+</div>
+
+
+#### Cấu hình Hadoop bằng cách chỉnh sửa tệp tin /usr/local/hadoop/etc/hadoop/core-site.xml như sau:
+<div class="code-block">
+  <pre><code id="code">
+&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name&gt;fs.defaultFS&lt;/name&gt;
+    &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+  </code>
+  </pre>
+</div>
+
+#### Chỉnh sửa tệp tin /usr/local/hadoop/etc/hadoop/hdfs-site.xml để cấu hình Hadoop để lưu trữ dữ liệu như sau:
+<div class="code-block">
+  <pre><code id="code">
+&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.replication&lt;/name&gt;
+    &lt;value&gt;1&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;
+    &lt;value&gt;/usr/local/hadoop/hadoop_data/hdfs/namenode&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;
+    &lt;value&gt;/usr/local/hadoop/hadoop_data/hdfs/datanode&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+  </code></pre>
+</div>
+
+#### Chỉnh sửa tệp tin /usr/local/hadoop/etc/hadoop/mapred-site.xml để cấu hình Hadoop để lưu trữ dữ liệu như sau:
+<div class="code-block">
+  <pre><code id="code">
+&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name>mapreduce.framework.name&lt;/name&gt;
+    &lt;value&gt;yarn&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+  </code>
+  </pre>
+</div>
+
+#### Chỉnh sửa tệp tin /usr/local/hadoop/etc/hadoop/yarn-site.xml để cấu hình Hadoop để lưu trữ dữ liệu như sau:
+<div class="code-block">
+  <pre><code id="code">
+&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
+    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;yarn.nodemanager.aux-services.mapreduce.shuffle.class&lt;/name&gt;
+    &lt;value&gt;org.apache.hadoop.mapred.ShuffleHandler&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;
+    &lt;value&gt;127.0.0.1&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;yarn.acl.enable&lt;/name&gt;
+    &lt;value&gt;0&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;yarn.nodemanager.env-whitelist&lt;/name&gt;&nbsp;&nbsp;&nbsp;
+  &lt;value&gt;JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PERPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+  </code>
+  </pre>
+</div>
+
+***
+
+### **Định dạng HDFS nghe mới khởi chạy hadoop lần đầu**
+
+<div class="code-block">
+  <pre><code id="code">
+hdfs namenode -format
+  </code></pre>
+</div>
+
+#### Nếu SSH daemon chưa được cài đặt, bạn có thể cài đặt nó bằng lệnh sau:
+
+<div class="code-block">
+  <pre><code id="code">
+sudo apt-get install openssh-server
+  </code></pre>
+</div>
+
+#### Sau khi cài đặt xong, chạy lệnh sau để kiểm tra trạng thái của SSH daemon:
+
+<div class="code-block">
+  <pre><code id="code">
+12sudo service ssh start
+  </code></pre>
+</div>
+
+#### Kiểm tra lại SSH daemon.
+
+<div class="code-block">
+  <pre><code id="code">
+sudo service ssh status
+  </code></pre>
+</div>
+
+
+#### Khởi động Hadoop bằng lệnh sau:
+```
+$HADOOP_HOME/sbin/start-all.sh
+```
+
+#### :smile: Khởi chạy được Data Node và Name Node trong Hadoop
+
+#### Data Node: http://localhost:9864
+#### Name Node: http://localhost:9870
+
+***
+
+## [![Apache Spark](https://spark.apache.org/images/spark-logo-rev.svg)](https://spark.apache.org/)
+
+## 🏁 **Cài đặt**
+
+### **Cập nhật hệ thống Ubuntu**
+
+<div class="code-block">
+  <pre><code id="code">
+sudo apt update && sudo apt upgrade
+  </code></pre>
+</div>
+
+***
+### **Cài đặt Java Development Kit (JDK)**
+
+<div class="code-block">
+  <pre><code id="code">
+sudo apt install default-jdk
+  </code></pre>
+</div>
+
+#### **Tải xuống Apache Spark**
+
+<div class="code-block">
+  <pre><code id="code">
+wget https://dlcdn.apache.org/spark/spark-3.3.2/spark-3.3.2-bin-hadoop3-scala2.13.tgz
+  </code></pre>
+</div>
+
+#### Sau khi tải xuống, giải nén file tar.gz bằng lệnh:
+
+<div class="code-block">
+  <pre><code id="code">
+tar -xzvf spark-3.3.2-bin-hadoop3-scala2.13.tgz
+  </code></pre>
+</div>
+
+
+#### Di chuyển thư mục Apache Spark đã giải nén vào thư mục /usr/local bằng lệnh:
+
+<div class="code-block">
+  <pre><code id="code">
+sudo mv spark-3.3.2-bin-hadoop3-scala2.13 /usr/local/spark
+  </code></pre>
+</div>
+
+***
+
+### **Thiết lập biến môi trường cho Spark**
+
+#### Trỏ vào file theo đường dẫn /etc/environment
 
 ```
-Give the example
+sudo vi /etc/environment
 ```
 
-And repeat
+#### Thêm các dòng sau vào tệp tin /etc/environment
 
+<div class="code-block">
+  <pre><code id="code">
+SPARK_HOME=/usr/local/spark
+PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
+  </code></pre>
+</div>
+
+#### Thực hiện lệnh sau để áp dụng các thay đổi cho biến môi trường:
+
+<div class="code-block">
+  <pre><code id="code">
+source /etc/environment
+  </code></pre>
+</div>
+
+***
+
+#### Khởi động master spark bằng lệnh sau:
 ```
-until finished
+$SPARK_HOME/sbin/start-master.sh
 ```
 
-End with an example of getting some data out of the system or using it for a little demo.
+#### Kiểm tra Spark đã khởi chạy: http://172.31.129.237:8080/
 
-## 🚀 Deploying your own bot <a name = "deployment"></a>
+***
 
-To see an example project on how to deploy your bot, please see my own configuration:
+#### Khởi động cluster spark bằng lệnh sau:
+```
+$SPARK_HOME/sbin/start-worker.sh spark://localhost:7077
+```
 
-- **Heroku**: https://github.com/kylelobo/Reddit-Bot#deploying_the_bot
-
-## ⛏️ Built Using <a name = "built_using"></a>
-
-- [PRAW](https://praw.readthedocs.io/en/latest/) - Python Reddit API Wrapper
-- [Heroku](https://www.heroku.com/) - SaaS hosting platform
-
-## ✍️ Authors <a name = "authors"></a>
-
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
-
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
-
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+#### Kiểm tra Spark đã khởi chạy: http://172.31.129.237:8080/
