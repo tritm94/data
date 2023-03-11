@@ -335,9 +335,8 @@ delete.topic.enable = true
 ```
 log.dirs=/usr/local/kafka/logs
 ```
-
-
-#### Tạo serivce Kafka ở Ubuntu bao gồm zookeeper và kafka
+***
+### **Tạo serivce Kafka ở Ubuntu bao gồm zookeeper và kafka**
 #### **Lưu ý: Chạy service zookeeper trước service kafka**
 ***
 #### **Zookeeper service**
