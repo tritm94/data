@@ -1,5 +1,6 @@
 [![Hadoop](https://www.vectorlogo.zone/logos/apache_hadoop/apache_hadoop-ar21.svg)](https://hadoop.apache.org/)
 [![ApacheSpark](https://www.vectorlogo.zone/logos/apache_spark/apache_spark-ar21.svg)](https://spark.apache.org/)
+[![Kafka](https://www.vectorlogo.zone/logos/apache_kafka/apache_kafka-ar21.svg)](https://kafka.apache.org/)
 
 # DATA WARE HOUSE - DATA LAKE #
 
@@ -9,17 +10,16 @@ Project about Data
 
 * [Install](#markdown-header--nstallation-tool)
     
+    * [Install system](#🏁-cài-đặt-chung)
+
     * [Hadoop](#hadoop)
 
     * [Apache Spark](#apache-spark)
 
-    * [Kafka](#)
+    * [Kafka](#kafka)
 
 ***
-
-## [![Hadoop](https://www.vectorlogo.zone/logos/apache_hadoop/apache_hadoop-ar21.svg)](https://hadoop.apache.org/)
-
-## 🏁 **Cài đặt**
+## 🏁 **Cài đặt chung**
 
 ### **Cập nhật hệ thống Ubuntu**
 
@@ -32,6 +32,29 @@ sudo apt update && sudo apt upgrade
 
 ```
 sudo apt install default-jdk
+```
+### **Nếu SSH daemon chưa được cài đặt, bạn có thể cài đặt nó bằng lệnh sau:**
+
+```
+sudo apt-get install openssh-server
+```
+
+#### Sau khi cài đặt xong, chạy lệnh sau để kiểm tra SSH daemon:
+
+```
+sudo service ssh start
+```
+
+#### Bật service ssh tự chạy khi khởi động ubuntu
+
+```
+sudo systemctl enable ssh
+```
+
+#### Kiểm tra lại trạng thái SSH daemon.
+
+```
+sudo service ssh status
 ```
 
 ***
@@ -47,14 +70,17 @@ ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 ```
 
-#### Cấp quyền cho key ở .ssh/authorized_keys
+#### Cấp quyền cho key xác thực người dùng
 
 ```
 chmod 0600 ~/.ssh/authorized_keys
 ```
 
 ***
+## [![Hadoop](https://www.vectorlogo.zone/logos/apache_hadoop/apache_hadoop-ar21.svg)](https://hadoop.apache.org/)
 
+## 🏁 **Cài đặt Hadoop**
+***
 ### **Tải xuống Hadoop**
 
 ```
@@ -183,35 +209,7 @@ export JAVA_HOME=/usr/lib/jvm/default-java
 ```
 hdfs namenode -format
 ```
-
 ***
-
-### **Nếu SSH daemon chưa được cài đặt, bạn có thể cài đặt nó bằng lệnh sau:**
-
-```
-sudo apt-get install openssh-server
-```
-
-#### Sau khi cài đặt xong, chạy lệnh sau để kiểm tra trạng thái của SSH daemon:
-
-```
-sudo service ssh start
-```
-
-#### Bật service ssh tự chạy khi khởi động ubuntu
-
-```
-sudo systemctl enable ssh
-```
-
-#### Kiểm tra lại SSH daemon.
-
-```
-sudo service ssh status
-```
-
-***
-
 ### ***Khởi động Hadoop bằng lệnh sau:***
 ```
 $HADOOP_HOME/sbin/start-all.sh
@@ -226,7 +224,7 @@ $HADOOP_HOME/sbin/start-all.sh
 
 ## [![Apache Spark](https://www.vectorlogo.zone/logos/apache_spark/apache_spark-ar21.svg)](https://spark.apache.org/)
 
-## 🏁 **Cài đặt**
+## 🏁 **Cài đặt Apache Spark**
 
 ### **Cập nhật hệ thống Ubuntu**
 
@@ -293,10 +291,153 @@ $SPARK_HOME/sbin/start-master.sh
 #### Kiểm tra Spark đã khởi chạy: http://172.31.129.237:8080/
 
 ***
+#### Khởi động cluster spark bằng lệnh sau: $SPARK_HOME/sbin/start-worker.sh {{URL}}
+#### **{{URL}}: Là đường dẫn spark theo master khi start**
 
-#### Khởi động cluster spark bằng lệnh sau:
+<p align="center">
+  <a href="" rel="noopener">
+ <img src="resource/master_url_spark.png" alt="Project logo"></a>
+</p>
+
 ```
-$SPARK_HOME/sbin/start-worker.sh spark://localhost:7077
+$SPARK_HOME/sbin/start-worker.sh spark://LAPTOP-HBKNP45N.:7077
 ```
 
+***
 #### Kiểm tra Spark đã khởi chạy: http://172.31.129.237:8080/
+
+***
+
+## [![Kafka](https://www.vectorlogo.zone/logos/apache_kafka/apache_kafka-ar21.svg)](https://kafka.apache.org/)
+
+## 🏁 **Cài đặt Kafka**
+***
+### **Tải xuống Kafka**
+
+```
+wget https://downloads.apache.org/kafka/3.4.0/kafka_2.12-3.4.0.tgz
+```
+
+#### Sau khi tải xuống, giải nén file tar.gz bằng lệnh:
+
+```
+tar -xzvf kafka_2.12-3.4.0.tgz --strip 1
+```
+##### --strip 1: Đảo bảo khi giải nén thư mục tgz đảm bảo giải nén thư mục kafka chứ không phải thư mục có tên giống kafka bên trong nó
+
+#### Di chuyển thư mục kafka đã giải nén vào thư mục /usr/local bằng lệnh:
+
+```
+sudo mv kafka_2.12-3.4.0 /usr/local/kafka
+```
+
+### **Cấu hình Kafka**
+
+#### **Truy cập vào file /config/server.properties ở Kafka**
+
+```
+sudo vi /usr/local/kafka/config/server.properties
+```
+
+#### Kafka topic bao gồm danh mục, nhóm hoặc tên của dữ liệu được đã được đăng ký. Mặc định ở Kafka sẽ không được xóa topic. Vì vậy tắt chức năng xóa topic ở Kafka
+
+```
+delete.topic.enable = true
+```
+
+#### Chỉ định thư mục logs kafka ở local
+
+```
+log.dirs=/usr/local/kafka/logs
+```
+
+
+#### Tạo serivce Kafka ở Ubuntu bao gồm zookeeper và kafka
+#### **Lưu ý: Chạy service zookeeper trước service kafka**
+***
+#### **Zookeeper service**
+
+#### **Tạo file /etc/systemd/system/zookeeper.service**
+
+```
+sudo vi /etc/systemd/system/zookeeper.service
+```
+
+#### Chỉnh sửa tệp tin /etc/systemd/system/zookeeper.service
+#### **Lưu ý:**
+  > Thay đổi User={{Local User}}. Kiểm tra {{Local User}} bằng lệnh: whoami
+
+```
+[Unit]
+Requires=network.target remote-fs.target
+After=network.target remote-fs.target
+
+[Service]
+Type=simple
+User=blue
+ExecStart=/usr/local/kafka/bin/zookeeper-server-start.sh /usr/local/kafka/config/zookeeper.properties
+ExecStop=/usr/local/kafka/bin/zookeeper-server-stop.sh
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target
+```
+
+***
+
+#### Khởi động service zookeeper
+  > enable: Là lệnh cho phép dịch vụ tự động khởi chạy khi hệ thống chạy lại
+```
+sudo systemctl enable zookeeper.service
+```
+
+#### Kiểm tra service zookeeper
+
+```
+sudo systemctl status zookeeper.service
+```
+
+***
+#### **Kafka service**
+
+#### **Tạo file /etc/systemd/system/kafka.service**
+
+```
+sudo vi /etc/systemd/system/kafka.service
+```
+
+#### Chỉnh sửa tệp tin /etc/systemd/system/kafka.service
+#### **Lưu ý:** 
+  > kafka.log là file được khởi tạo khi run service kafka. Không có ở mặc định ở thư mục log của kafka.
+  
+  > Thay đổi User={{Local User}}. Kiểm tra {{Local User}} bằng lệnh: whoami
+
+
+```
+[Unit]
+Requires=zookeeper.service
+After=zookeeper.service
+
+[Service]
+Type=simple
+User=blue
+ExecStart=/bin/sh -c '/usr/local/kafka/bin/kafka-server-start.sh /usr/local/kafka/config/server.properties > /usr/local/kafka/logs/kafka.log 2>&1'
+ExecStop=/usr/local/kafka/bin/kafka-server-stop.sh
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target
+```
+***
+#### Khởi động service kafka. 
+  > enable: Là lệnh cho phép dịch vụ tự động khởi chạy khi hệ thống chạy lại
+
+```
+sudo systemctl enable kafka.service
+```
+
+#### Kiểm tra service kafka
+
+```
+sudo systemctl status kafka.service
+```
