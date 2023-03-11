@@ -308,7 +308,7 @@ wget https://downloads.apache.org/kafka/3.4.0/kafka_2.12-3.4.0.tgz
 ```
 tar -xzvf kafka_2.12-3.4.0.tgz --strip 1
 ```
-> --strip 1: Đảm bảo khi giải nén thư mục tgz đảm bảo giải nén thư mục kafka chứ không phải thư mục có tên giống kafka bên trong nó
+> --strip 1: Đảm bảo khi giải nén file tgz đảm bảo giải nén thư mục kafka chứ không phải thư mục con tên giống kafka bên trong nó
 
 #### Di chuyển thư mục kafka đã giải nén vào thư mục /usr/local bằng lệnh:
 
