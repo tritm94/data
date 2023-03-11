@@ -215,7 +215,7 @@ hdfs namenode -format
 $HADOOP_HOME/sbin/start-all.sh
 ```
 
-#### :smile: Khởi chạy được Data Node và Name Node trong Hadoop
+#### :smile: Kiểm tra Data Node và Name Node trong Hadoop
 
 #### Data Node: http://localhost:9864
 #### Name Node: http://localhost:9870
@@ -288,7 +288,7 @@ source /etc/environment
 $SPARK_HOME/sbin/start-master.sh
 ```
 
-#### Kiểm tra Spark đã khởi chạy: http://172.31.129.237:8080/
+#### :smile: Kiểm tra Spark Master: http://172.31.129.237:8080/
 
 ***
 #### Khởi động cluster spark bằng lệnh sau: $SPARK_HOME/sbin/start-worker.sh {{URL}}
@@ -304,7 +304,7 @@ $SPARK_HOME/sbin/start-worker.sh spark://LAPTOP-HBKNP45N.:7077
 ```
 
 ***
-#### Kiểm tra Spark đã khởi chạy: http://172.31.129.237:8080/
+#### :smile: Kiểm tra Spark Worker: http://172.31.129.237:8081/
 
 ***
 
@@ -323,7 +323,7 @@ wget https://downloads.apache.org/kafka/3.4.0/kafka_2.12-3.4.0.tgz
 ```
 tar -xzvf kafka_2.12-3.4.0.tgz --strip 1
 ```
-##### --strip 1: Đảo bảo khi giải nén thư mục tgz đảm bảo giải nén thư mục kafka chứ không phải thư mục có tên giống kafka bên trong nó
+> --strip 1: Đảm bảo khi giải nén thư mục tgz đảm bảo giải nén thư mục kafka chứ không phải thư mục có tên giống kafka bên trong nó
 
 #### Di chuyển thư mục kafka đã giải nén vào thư mục /usr/local bằng lệnh:
 
@@ -382,16 +382,13 @@ Restart=on-abnormal
 [Install]
 WantedBy=multi-user.target
 ```
-
-***
-
 #### Khởi động service zookeeper
   > enable: Là lệnh cho phép dịch vụ tự động khởi chạy khi hệ thống chạy lại
 ```
 sudo systemctl enable zookeeper.service
 ```
 
-#### Kiểm tra service zookeeper
+#### :smile: Kiểm tra service zookeeper
 
 ```
 sudo systemctl status zookeeper.service
@@ -428,7 +425,7 @@ Restart=on-abnormal
 [Install]
 WantedBy=multi-user.target
 ```
-***
+
 #### Khởi động service kafka. 
   > enable: Là lệnh cho phép dịch vụ tự động khởi chạy khi hệ thống chạy lại
 
@@ -436,7 +433,7 @@ WantedBy=multi-user.target
 sudo systemctl enable kafka.service
 ```
 
-#### Kiểm tra service kafka
+#### :smile: Kiểm tra service kafka
 
 ```
 sudo systemctl status kafka.service
