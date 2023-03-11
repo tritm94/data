@@ -8,15 +8,15 @@ Project about Data
 
 # 📝 Menu
 
-* [Install](#markdown-header--nstallation-tool)
+## [Install](#markdown-header-nstallation-tool)
     
-    * [Install system](#🏁-cài-đặt-chung)
+  - [Install general system](#🏁-cài-đặt-chung)
 
-    * [Hadoop](#hadoop)
+  - [Hadoop](#hadoop)
 
-    * [Apache Spark](#apache-spark)
+  - [Apache Spark](#apache-spark)
 
-    * [Kafka](#kafka)
+  - [Kafka](#kafka)
 
 ***
 ## 🏁 **Cài đặt chung**
@@ -225,21 +225,8 @@ $HADOOP_HOME/sbin/start-all.sh
 ## [![Apache Spark](https://www.vectorlogo.zone/logos/apache_spark/apache_spark-ar21.svg)](https://spark.apache.org/)
 
 ## 🏁 **Cài đặt Apache Spark**
-
-### **Cập nhật hệ thống Ubuntu**
-
-```
-sudo apt update && sudo apt upgrade
-```
-
 ***
-### **Cài đặt Java Development Kit (JDK)**
-
-```
-sudo apt install default-jdk
-```
-
-#### **Tải xuống Apache Spark**
+### **Tải xuống Apache Spark**
 
 ```
 wget https://dlcdn.apache.org/spark/spark-3.3.2/spark-3.3.2-bin-hadoop3-scala2.13.tgz
@@ -250,7 +237,6 @@ wget https://dlcdn.apache.org/spark/spark-3.3.2/spark-3.3.2-bin-hadoop3-scala2.1
 ```
 tar -xzvf spark-3.3.2-bin-hadoop3-scala2.13.tgz
 ```
-
 
 #### Di chuyển thư mục Apache Spark đã giải nén vào thư mục /usr/local bằng lệnh:
 
