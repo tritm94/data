@@ -315,7 +315,7 @@ tar -xzvf kafka_2.12-3.4.0.tgz --strip 1
 ```
 sudo mv kafka_2.12-3.4.0 /usr/local/kafka
 ```
-
+***
 ### **Cấu hình Kafka**
 
 #### **Truy cập vào file /config/server.properties ở Kafka**
@@ -372,7 +372,6 @@ WantedBy=multi-user.target
 ```
 sudo systemctl enable zookeeper.service
 ```
-
 #### :smile: Kiểm tra service zookeeper
 
 ```
@@ -417,7 +416,6 @@ WantedBy=multi-user.target
 ```
 sudo systemctl enable kafka.service
 ```
-
 #### :smile: Kiểm tra service kafka
 
 ```
