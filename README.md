@@ -289,7 +289,6 @@ $SPARK_HOME/sbin/start-master.sh
 $SPARK_HOME/sbin/start-worker.sh spark://LAPTOP-HBKNP45N.:7077
 ```
 
-***
 #### :smile: Kiểm tra Spark Worker: http://172.31.129.237:8081/
 
 ***
