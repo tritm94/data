@@ -18,6 +18,8 @@ Project about Data
 
   - [Kafka](#kafka)
 
+  - [Python](#Python)
+
 ***
 ## 🏁 **Cài đặt chung**
 
@@ -420,3 +422,10 @@ sudo systemctl enable kafka.service
 ```
 sudo systemctl status kafka.service
 ```
+
+## [![Python](https://www.vectorlogo.zone/logos/python/python-ar21.svg)](https://www.python.org/)
+
+### Cài đặt
+
+#### Install and Switch Python Versions [Here](https://www.rosehosting.com/blog/how-to-install-and-switch-python-versions-on-ubuntu-20-04/)
+
