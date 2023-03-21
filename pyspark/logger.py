@@ -1,4 +1,4 @@
-class Log4j:
+class Logger:
     def __init__(self, spark):
         log4j = spark._jvm.org.apache.log4j
 

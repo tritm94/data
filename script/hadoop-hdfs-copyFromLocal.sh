@@ -1,0 +1,1 @@
+$HADOOP_HOME/bin/hdfs dfs -copyFromLocal /home/blue/project/data/dist/word_count.txt /word_count

@@ -10,8 +10,8 @@ if __name__ == "_main_":
         .appName("File Streaming Demo") \
         .master("local[3]") \
         .config("spark.streaming.stopGracefullyOnShutdown", "true") \
-        .config("spark.jars.packages","org.apache.spark:spark-sql-kafka-0-10_2.12:3.3.2")\
-        .config("org.scala-lang","org.scala-lang:scala-library:jar:2.13.10")\
+        .config("spark.jars.packages", "org.apache.spark:spark-sql-kafka-0-10_2.12:3.3.2")\
+        .config("org.scala-lang", "org.scala-lang:scala-library:jar:2.13.10")\
         .getOrCreate()
 
     logger = Log4j(spark)
@@ -54,7 +54,8 @@ if __name__ == "_main_":
         .option("startingOffsets", "earliest") \
         .load()
 
-    value_df = kafka_df.select(from_json(col("value").cast("string"), schema).alias("value"))
+    value_df = kafka_df.select(
+        from_json(col("value").cast("string"), schema).alias("value"))
 
     explode_df = value_df.selectExpr("value.InvoiceNumber", "value.CreatedTime", "value.StoreID",
                                      "value.PosID", "value.CustomerType", "value.PaymentMethod", "value.DeliveryType",

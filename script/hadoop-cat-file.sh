@@ -1,0 +1,1 @@
+$HADOOP_HOME/bin/hdfs dfs -cat /word_count/output/part-00000

@@ -1,0 +1,1 @@
+$HADOOP_HOME/bin/hdfs dfs -mkdir word_count

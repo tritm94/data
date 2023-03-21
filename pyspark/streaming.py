@@ -1,18 +1,18 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import *
 
-from logger import Log4j
+from logger import Logger
 
 if __name__ == "__main__":
     spark = SparkSession \
         .builder \
         .appName("Streaming Word Count") \
-        .master("local[3]") \
+        .master("local[2]") \
         .config("spark.streaming.stopGracefullyOnShutdown", "true") \
         .config("spark.sql.shuffle.partitions", 3) \
         .getOrCreate()
 
-    logger = Log4j(spark)
+    logger = Logger(spark)
 
     lines_df = spark.readStream \
         .format("socket") \

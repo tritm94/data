@@ -37,19 +37,19 @@ fire_schema = StructType([
     StructField('Delay', FloatType(), True) \
 ])
 # Use the DataFrameReader interface to read a CSV file
-sf_fire_file = "/home/blue/project/python/mci/mci-dw-dl/lession5-spark/Fire_Incidents.csv"
+sf_fire_file = "/home/blue/project/data/dist/Fire_Incidents.csv"
 fire_df = spark.read.csv(sf_fire_file, header=True, schema=fire_schema)
 
 # save DataFrame as a Parquet file or SQL table
-parquet_table = ...  # name of the table
+parquet_table = 'abc'  # name of the table
 fire_df.write.format("parquet").saveAsTable(
     parquet_table)  # .save(parquet_path)
 
 
 # filter file
 few_fire_df = (fire_df
-               .select("IncidentNumber", "AvailableDtTm", "CallType")
-               .where(col("CallType") != "Medical Incident"))
+.select("IncidentNumber", "AvailableDtTm", "CallType")
+.where(col("CallType") != "Medical Incident"))
 few_fire_df.show(5, truncate=False)
 
 # Return number of distinct types of calls using countDistinct()
@@ -78,10 +78,12 @@ fire_ts_df = (new_fire_df
               .drop("CallDate")
               .withColumn("OnWatchDate", to_timestamp(col("WatchDate"), "MM/dd/yyyy"))
               .drop("WatchDate")
-              .withColumn("AvailableDtTS", to_timestamp(col("AvailableDtTm"),
-                                                        "MM/dd/yyyy hh:mm:ss a"))
+              .withColumn("AvailableDtTS", to_timestamp(col("AvailableDtTm"),"MM/dd/yyyy hh:mm:ss a"))
               .drop("AvailableDtTm"))
 # Select the converted columns
 (fire_ts_df
  .select("IncidentDate", "OnWatchDate", "AvailableDtTS")
  .show(5, False))
+
+
+

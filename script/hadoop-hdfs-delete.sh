@@ -1,0 +1,1 @@
+$HADOOP_HOME/bin/hdfs dfs -rm -r hdfs://localhost:9000/word_count/output

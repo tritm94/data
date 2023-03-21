@@ -20,6 +20,10 @@ Project about Data
 
   - [Python](#Python)
 
+## [Usage](#markdown-header-nstallation-tool)
+
+# Cài đặt
+
 ***
 ## 🏁 **Cài đặt chung**
 
@@ -428,4 +432,16 @@ sudo systemctl status kafka.service
 ### Cài đặt
 
 #### Install and Switch Python Versions [Here](https://www.rosehosting.com/blog/how-to-install-and-switch-python-versions-on-ubuntu-20-04/)
+#### Pip install package by python3
 
+```
+python3 -m pip install {{package_name}}
+```
+
+***
+
+# Cách sử dụng
+
+# Spark
+
+Streaming Data : nc -lk 9999
